@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pizza-shop/static/css/main.5f361e03.chunk.css",
-    "main.js": "/pizza-shop/static/js/main.f18f115b.chunk.js",
-    "main.js.map": "/pizza-shop/static/js/main.f18f115b.chunk.js.map",
+    "main.js": "/pizza-shop/static/js/main.6b4faa72.chunk.js",
+    "main.js.map": "/pizza-shop/static/js/main.6b4faa72.chunk.js.map",
     "runtime-main.js": "/pizza-shop/static/js/runtime-main.8d4e47f6.js",
     "runtime-main.js.map": "/pizza-shop/static/js/runtime-main.8d4e47f6.js.map",
     "static/js/2.13e9010e.chunk.js": "/pizza-shop/static/js/2.13e9010e.chunk.js",
     "static/js/2.13e9010e.chunk.js.map": "/pizza-shop/static/js/2.13e9010e.chunk.js.map",
     "index.html": "/pizza-shop/index.html",
-    "precache-manifest.6d1c661c28908463b4f06540421aa6d5.js": "/pizza-shop/precache-manifest.6d1c661c28908463b4f06540421aa6d5.js",
+    "precache-manifest.19c861542ca454ab6b7cb11e754258e1.js": "/pizza-shop/precache-manifest.19c861542ca454ab6b7cb11e754258e1.js",
     "service-worker.js": "/pizza-shop/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/pizza-shop/static/css/main.5f361e03.chunk.css.map",
     "static/js/2.13e9010e.chunk.js.LICENSE.txt": "/pizza-shop/static/js/2.13e9010e.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.8d4e47f6.js",
     "static/js/2.13e9010e.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.f18f115b.chunk.js"
+    "static/js/main.6b4faa72.chunk.js"
   ]
 }
