@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  fetch('https://pizza-shop-66ecb.firebaseio.com/test.json').then(res => {
+    console.log(res);
+  });
+
+
   return (
     <div className="App">
       <header className="App-header">
