@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import FirebaseMenuService from "./services/firebaseMenuService";
 
 function App() {
-  fetch('https://pizza-shop-66ecb.firebaseio.com/test.json').then(res => {
-    console.log(res);
-  });
+  const menuService = new FirebaseMenuService();
+  menuService.getMenu().then(res => console.log(res));
 
 
   return (
