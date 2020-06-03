@@ -1,28 +1,35 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
-import FirebaseMenuService from "./services/firebaseMenuService";
+import React from 'react';
+import useMenu from "./hooks/useMenu";
+import Navbar from "./components/navbar/navbar";
+import Sidebar from "./components/sidebar/sidebar";
+import "./App.css"
 
 function App() {
-  const menuService = new FirebaseMenuService();
-  menuService.getMenu().then(res => console.log(res));
-
+  const menu = useMenu();
+  console.log(menu);
+  let menuItems = [];
+  if (menu) {
+    menuItems = Object.keys(menu);
+    console.log(menuItems);
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit and save to reload. 123
-          123
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <div>
+        <Sidebar/>
+        <div className="main-content">
+          <p>{menuItems}
+          </p>
+          <a
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

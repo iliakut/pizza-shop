@@ -4,11 +4,10 @@ class FirebaseMenuService {
   async getData(route) {
     const res = await fetch(`${this._apiBase}/${route}`);
     return await res.json();
-
   }
 
   async getMenu() {
-    return await this.getData('menu/pizza.json')
+    return await this.getData('menu.json')
   }
 
 }
