@@ -1,17 +1,11 @@
 import React from "react";
 
-const MainContent = ({menuItems}) => {
+const MainContent = ({menuItem}) => {
+  console.log(menuItem)
   return (
     <div className="main-content">
-      <p>{menuItems}
+      <p>{JSON.stringify(menuItem)}
       </p>
-      <a
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
     </div>
   );
 };
