@@ -10,16 +10,21 @@ function App() {
   console.log(menu);
   let menuItems = [];
   if (menu) {
-    menuItems = Object.keys(menu);
-    console.log(menuItems);
+    menuItems = menu.map(item => {
+      return {
+        header: item.header,
+        id: item.id,
+      }
+    });
   }
+  console.log(menuItems)
 
   return (
     <React.Fragment>
       <Navbar/>
       <div className="app-content">
-        <Sidebar/>
-        <MainContent menuItems={menuItems}/>
+        <Sidebar menuItems={menuItems}/>
+        <MainContent menuItems={[]}/>
       </div>
     </React.Fragment>
   );
