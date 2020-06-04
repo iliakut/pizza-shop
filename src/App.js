@@ -3,6 +3,7 @@ import useMenu from "./hooks/useMenu";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import "./App.css"
+import MainContent from "./components/mainContent/mainContent";
 
 function App() {
   const menu = useMenu();
@@ -14,23 +15,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <React.Fragment>
       <Navbar/>
-      <div>
+      <div className="app-content">
         <Sidebar/>
-        <div className="main-content">
-          <p>{menuItems}
-          </p>
-          <a
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </div>
+        <MainContent menuItems={menuItems}/>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
