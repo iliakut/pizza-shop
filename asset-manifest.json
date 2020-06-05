@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/pizza-shop/static/css/main.5347c5e7.chunk.css",
-    "main.js": "/pizza-shop/static/js/main.84561467.chunk.js",
-    "main.js.map": "/pizza-shop/static/js/main.84561467.chunk.js.map",
+    "main.css": "/pizza-shop/static/css/main.b50a51c5.chunk.css",
+    "main.js": "/pizza-shop/static/js/main.556428a7.chunk.js",
+    "main.js.map": "/pizza-shop/static/js/main.556428a7.chunk.js.map",
     "runtime-main.js": "/pizza-shop/static/js/runtime-main.8d4e47f6.js",
     "runtime-main.js.map": "/pizza-shop/static/js/runtime-main.8d4e47f6.js.map",
     "static/js/2.1c76f684.chunk.js": "/pizza-shop/static/js/2.1c76f684.chunk.js",
     "static/js/2.1c76f684.chunk.js.map": "/pizza-shop/static/js/2.1c76f684.chunk.js.map",
     "index.html": "/pizza-shop/index.html",
-    "precache-manifest.3a5a3f7f25419d9e91071b3d038a582b.js": "/pizza-shop/precache-manifest.3a5a3f7f25419d9e91071b3d038a582b.js",
+    "precache-manifest.669dc4ca583d519543b9493c096c0245.js": "/pizza-shop/precache-manifest.669dc4ca583d519543b9493c096c0245.js",
     "service-worker.js": "/pizza-shop/service-worker.js",
-    "static/css/main.5347c5e7.chunk.css.map": "/pizza-shop/static/css/main.5347c5e7.chunk.css.map",
+    "static/css/main.b50a51c5.chunk.css.map": "/pizza-shop/static/css/main.b50a51c5.chunk.css.map",
     "static/js/2.1c76f684.chunk.js.LICENSE.txt": "/pizza-shop/static/js/2.1c76f684.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8d4e47f6.js",
     "static/js/2.1c76f684.chunk.js",
-    "static/css/main.5347c5e7.chunk.css",
-    "static/js/main.84561467.chunk.js"
+    "static/css/main.b50a51c5.chunk.css",
+    "static/js/main.556428a7.chunk.js"
   ]
 }
