@@ -7,6 +7,3 @@
     display: flex;
     flex-direction: column;
 }
-.sidebar .sidebar__button {
-    margin: 5px 0 5px 0;
-}

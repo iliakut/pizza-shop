@@ -27,9 +27,13 @@ function App() {
   return (
     <React.Fragment>
       <Navbar/>
-      <div className="app-content">
-        <Sidebar menuItems={menuItems}/>
-        <MainContent menuItem={currentMenuItem}/>
+      <div className="d-flex justify-content-between align-items-start">
+        <div className="flex-shrink-1">
+          <Sidebar menuItems={menuItems}/>
+        </div>
+        <div className="w-100">
+          <MainContent menuItem={currentMenuItem}/>
+        </div>
       </div>
     </React.Fragment>
   );
