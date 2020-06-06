@@ -5,9 +5,13 @@ const Card = ({name, description, imageUrl}) => {
   return (
     <div className="card mr-3 mb-2 border-secondary card-component">
       <h3 className="card-header">{name}</h3>
-      <img style={{height: 'auto', width: 100 + '%', display: 'block'}}
-           src={imageUrl}
-           alt="Card image"/>
+      <div className="image-wrap">
+        <img
+          className="image"
+          src={imageUrl}
+          alt="Card image"
+        />
+      </div>
         <div className="card-body">
           <p className="card-text">{description}</p>
         </div>

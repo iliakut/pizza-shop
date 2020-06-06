@@ -1,3 +1,14 @@
 .card-component {
-    width: 300px;
+    width: 30%;
+}
+
+.card-component .image-wrap {
+    overflow: hidden;
+    max-height: 200px;
+}
+
+.card-component .image {
+    height: auto;
+    width: 100%;
+    display: block;
 }
