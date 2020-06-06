@@ -27,7 +27,7 @@ function App() {
   return (
     <React.Fragment>
       <Navbar/>
-      <div className="d-flex justify-content-between align-items-start">
+      <div className="d-flex justify-content-between">
         <div className="flex-shrink-1">
           <Sidebar menuItems={menuItems}/>
         </div>
