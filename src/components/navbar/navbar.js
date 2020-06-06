@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-end">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-end sticky-top">
       <button className="btn btn-secondary">
         <svg className="bi bi-cart3" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor"
              xmlns="http://www.w3.org/2000/svg">
