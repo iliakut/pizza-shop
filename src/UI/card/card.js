@@ -17,7 +17,7 @@ const Card = ({name, description, imageUrl}) => {
         </div>
         <div className="card-footer text-muted d-flex justify-content-between align-items-baseline">
           price
-          <button className="btn btn-secondary">Add to card</button>
+          <button className="btn btn-secondary">Add +</button>
         </div>
     </div>
   );
