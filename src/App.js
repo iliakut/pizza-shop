@@ -28,10 +28,10 @@ function App() {
     <React.Fragment>
       <Navbar/>
       <div className="d-flex justify-content-between">
-        <div className="flex-shrink-1">
+        <div className="flex-shrink-1 sidebar-wrap">
           <Sidebar menuItems={menuItems}/>
         </div>
-        <div>
+        <div className="main-content-wrap">
           <MainContent menuItem={currentMenuItem}/>
         </div>
       </div>

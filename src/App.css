@@ -1,0 +1,9 @@
+.main-content-wrap {
+    margin-left: 70px;
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+    .main-content-wrap {
+        margin-left: 20px;
+    }
+}

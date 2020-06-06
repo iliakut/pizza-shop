@@ -20,7 +20,7 @@ const MainContent = ({menuItem}) => {
   }
 
   return (
-    <div className="mx-5 mt-2">
+    <div className="mr-2 mt-2">
       <h1>{header}</h1>
       <div className="d-flex justify-content-start flex-wrap w-100">
         {Cards}
