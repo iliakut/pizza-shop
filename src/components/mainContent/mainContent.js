@@ -13,6 +13,7 @@ const MainContent = ({menuItem}) => {
           key={position.id}
           name={position.name}
           description={position.description}
+          imageUrl={position.img}
         />
       )
     }) ;
