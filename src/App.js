@@ -31,7 +31,7 @@ function App() {
         <div className="flex-shrink-1">
           <Sidebar menuItems={menuItems}/>
         </div>
-        <div className="w-100">
+        <div>
           <MainContent menuItem={currentMenuItem}/>
         </div>
       </div>
