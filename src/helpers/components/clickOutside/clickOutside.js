@@ -9,9 +9,11 @@ function useOutsideAlerter(ref, handler) {
     }
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchmove ", handleClickOutside);
+    document.addEventListener("touchstart ", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchmove ", handleClickOutside);
+      document.removeEventListener("touchstart ", handleClickOutside);
     };
   }, [handler, ref]);
 }
