@@ -1,11 +1,20 @@
 import React from "react";
 import "./sidebar.css"
 import Burger from "../../UI/burger/burger";
+import {Link} from "react-router-dom";
 
 const Sidebar = ({menuItems}) => {
   const Buttons = menuItems.map(item => {
     return (
-      <button key={item.id} type="button" className="btn btn-primary mt-2">{item.header}</button>
+     <Link
+       to={`/${item.header}`}
+       key={item.id}>
+      <button
+        type="button"
+        className="btn btn-primary mt-2 w-100">
+        {item.header}
+      </button>
+     </Link>
     )
   });
 

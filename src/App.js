@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import "./App.css"
 import MainContent from "./components/mainContent/mainContent";
+import {BrowserRouter as Router} from "react-router-dom";
 
 function App() {
   const [openMenuId, setOpenMenuId] = useState(1);
@@ -25,17 +26,19 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <Navbar/>
-      <div className="d-flex justify-content-between">
-        <div className="flex-shrink-1 sidebar-wrap">
-          <Sidebar menuItems={menuItems}/>
+    <Router>
+      <React.Fragment>
+        <Navbar/>
+        <div className="d-flex justify-content-between">
+          <div className="flex-shrink-1 sidebar-wrap">
+            <Sidebar menuItems={menuItems}/>
+          </div>
+          <div className="main-content-wrap">
+            <MainContent menuItem={currentMenuItem}/>
+          </div>
         </div>
-        <div className="main-content-wrap">
-          <MainContent menuItem={currentMenuItem}/>
-        </div>
-      </div>
-    </React.Fragment>
+      </React.Fragment>
+    </Router>
   );
 }
 
