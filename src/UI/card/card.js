@@ -9,7 +9,7 @@ const Card = ({name, description, imageUrl}) => {
         <img
           className="image"
           src={imageUrl}
-          alt="Card image"
+          alt={name}
         />
       </div>
         <div className="card-body">
