@@ -1,15 +1,19 @@
 import React, {useState} from "react";
 import "./burger.css"
-import ClickOutside from "../clickOutside/clickOutside";
+import ClickOutside from "../../helpers/components/clickOutside/clickOutside";
 
 const Burger = ({children}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const handleDetailsClick = (event) => {
+    event.preventDefault();
+    setIsOpen(!isOpen)
+  };
 
   return (
     <ClickOutside handler={() => setIsOpen(false)}>
       <div className="burger">
-        <details open={isOpen} onClick={() => setIsOpen(true)}>
-          <summary className="btn btn-primary burger__summary px-1 py-0">
+        <details open={isOpen} onClick={(event) => handleDetailsClick(event)}>
+          <summary className="btn btn-primary burger__summary px-1 py-0 my-1">
             <svg className="bi bi-list"
                  width="1em"
                  height="1em"

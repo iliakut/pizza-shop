@@ -5,12 +5,13 @@ function useOutsideAlerter(ref, handler) {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         handler();
-        //alert("You clicked outside of me!");
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchmove ", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchmove ", handleClickOutside);
     };
   }, [handler, ref]);
 }
