@@ -1,2 +1,0 @@
-.sidebar{width:200px;background-color:#f3969a;height:100%;overflow:auto;border-radius:10px;display:flex;flex-direction:column}@media (max-width:768px){.sidebar{position:fixed;display:none}}.card-component{width:30%}@media (max-width:1024px){.card-component{width:45%}}@media (max-width:768px){.card-component{width:45%}}.card-component .image{height:auto;width:100%;display:block}
-/*# sourceMappingURL=main.cca20d53.chunk.css.map */
