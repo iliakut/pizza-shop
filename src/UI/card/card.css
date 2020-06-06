@@ -9,9 +9,14 @@
 }
 
 @media (max-width: 768px) {
-    /* TODO */
     .card-component {
         width: 45%;
+    }
+}
+
+@media (max-width: 600px) {
+    .card-component {
+        width: 100%;
     }
 }
 
