@@ -4,13 +4,12 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import "./App.css"
 import MainContent from "./components/mainContent/mainContent";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 function App() {
   const [openMenuId, setOpenMenuId] = useState(1);
   const menu = useMenu();
   let menuItems = [];
-  let currentMenuItem = {};
 
   if (menu) {
     menuItems = menu.map(item => {
@@ -19,22 +18,30 @@ function App() {
         id: item.id,
       }
     });
-
-    currentMenuItem = menu.find(item => {
-      return item.id === openMenuId;
-    });
   }
+
+  const getCurrentMenuItem = (name) => {
+    if (menu) {
+      return menu.find(item => {
+        return item.header.toLowerCase() === name.toLowerCase();
+      });
+    }
+  };
 
   return (
     <Router>
       <React.Fragment>
         <Navbar/>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-start">
           <div className="flex-shrink-1 sidebar-wrap">
             <Sidebar menuItems={menuItems}/>
           </div>
           <div className="main-content-wrap">
-            <MainContent menuItem={currentMenuItem}/>
+            <Route path="/:menuHeader" render={({match}) => {
+              const {menuHeader}  = match.params;
+              const menuItem = getCurrentMenuItem(menuHeader);
+              return <MainContent menuItem={menuItem}/>
+            }}/>
           </div>
         </div>
       </React.Fragment>

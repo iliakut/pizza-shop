@@ -10,7 +10,7 @@ const MainContent = ({menuItem}) => {
     Cards = menuPositions.map(position => {
       return (
         <Card
-          key={position.id}
+          key={header + position.id}
           name={position.name}
           description={position.description}
           imageUrl={position.img}
