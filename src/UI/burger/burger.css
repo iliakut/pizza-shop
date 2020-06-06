@@ -1,0 +1,16 @@
+.burger details summary::-webkit-details-marker {
+    display: none
+}
+.burger details > summary {
+    list-style: none;
+}
+.burger svg {
+    width: 30px;
+    height: 30px;
+}
+
+.burger__content {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3969A;
+}
