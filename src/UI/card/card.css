@@ -2,9 +2,20 @@
     width: 30%;
 }
 
+@media (max-width: 1024px) {
+    .card-component {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* TODO */
+    .card-component {
+        width: 45%;
+    }
+}
+
 .card-component .image-wrap {
-    overflow: hidden;
-    max-height: 200px;
 }
 
 .card-component .image {
