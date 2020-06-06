@@ -14,7 +14,7 @@
 }
 
 @media (min-width: 769px) {
-    .sidebar-burger-menu {
+    .sidebar__burger-menu {
         display: none;
     }
 }
