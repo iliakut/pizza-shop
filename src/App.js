@@ -30,16 +30,15 @@ function App() {
     }
   };
 
-  const addToCard = (menuId, positionId) => {
+  const addToCard = (positionId) => {
     setCartItems(cartItems => {
       const newCartItems = {...cartItems};
 
-      if (newCartItems[menuId]) {
-        newCartItems[menuId].push(positionId);
+      if (newCartItems[positionId]) {
+        newCartItems[positionId] = newCartItems[positionId] + 1;
         newCartItems.count = newCartItems.count + 1;
       } else {
-        newCartItems[menuId] = [];
-        newCartItems[menuId].push(positionId);
+        newCartItems[positionId] = 1;
         newCartItems.count = newCartItems.count + 1;
       }
 

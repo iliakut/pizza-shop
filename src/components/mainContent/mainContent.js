@@ -16,7 +16,7 @@ const MainContent = ({menuItem, addToCard}) => {
           name={position.name}
           description={position.description}
           imageUrl={position.img}
-          addToCard={() => addToCard(menuItem.id, position.id)}
+          addToCard={() => addToCard(position.id)}
           priceFirst={priceEuro}
           priceFirstSymbol={'€'}
           priceSecond={priceDollar}
