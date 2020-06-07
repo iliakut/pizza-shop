@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import MainPage from "./components/mainPage/mainPage";
 
 function App() {
-  const [openMenuId, setOpenMenuId] = useState(1);
+  const [cartItems, setCartItems] = useState({});
   const menu = useMenu();
   let menuItems = [];
 
@@ -29,10 +29,20 @@ function App() {
     }
   };
 
+  const addToCard = (menuId, positionId) => {
+    console.log(menuId, positionId)
+    // setCartItems(cartItems => {
+    //   if (cartItems[menuId]) {
+    //     cartItems[menuId].push(positionId);
+    //   }
+    //   cartItems[menuId]
+    // })
+  };
+
   return (
     <Router>
       <React.Fragment>
-        <Navbar/>
+        <Navbar cartItems={cartItems}/>
         <div className="d-flex justify-content-start">
           <div className="flex-shrink-1 sidebar-wrap">
             <Sidebar menuItems={menuItems}/>
@@ -44,7 +54,7 @@ function App() {
             <Route path="/:menuHeader" render={({match}) => {
               const {menuHeader}  = match.params;
               const menuItem = getCurrentMenuItem(menuHeader);
-              return <MainContent menuItem={menuItem}/>
+              return <MainContent menuItem={menuItem} addToCard={addToCard}/>
             }}/>
             <Redirect to="/"/>
           </div>

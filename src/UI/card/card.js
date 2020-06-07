@@ -6,6 +6,7 @@ const Card = (
     name,
     description,
     imageUrl,
+    addToCard,
     priceFirst,
     priceFirstSymbol,
     priceSecond,
@@ -33,7 +34,7 @@ const Card = (
               : null
           }
           </span>
-          <button className="btn btn-secondary">Add +</button>
+          <button onClick={addToCard} className="btn btn-secondary">Add +</button>
         </div>
     </div>
   );

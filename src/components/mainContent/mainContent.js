@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../UI/card/card";
 
-const MainContent = ({menuItem}) => {
+const MainContent = ({menuItem, addToCard}) => {
   const header = menuItem?.header;
   const menuPositions = menuItem?.items;
   let Cards;
@@ -16,6 +16,7 @@ const MainContent = ({menuItem}) => {
           name={position.name}
           description={position.description}
           imageUrl={position.img}
+          addToCard={() => addToCard(menuItem.id, position.id)}
           priceFirst={priceEuro}
           priceFirstSymbol={'€'}
           priceSecond={priceDollar}
