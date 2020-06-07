@@ -4,11 +4,12 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import "./App.css"
 import MainContent from "./components/mainContent/mainContent";
-import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 import MainPage from "./components/mainPage/mainPage";
+import OrderPage from "./components/orderPage/orderPage";
 
 function App() {
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState({count: 0});
   const menu = useMenu();
   let menuItems = [];
 
@@ -30,13 +31,20 @@ function App() {
   };
 
   const addToCard = (menuId, positionId) => {
-    console.log(menuId, positionId)
-    // setCartItems(cartItems => {
-    //   if (cartItems[menuId]) {
-    //     cartItems[menuId].push(positionId);
-    //   }
-    //   cartItems[menuId]
-    // })
+    setCartItems(cartItems => {
+      const newCartItems = {...cartItems};
+
+      if (newCartItems[menuId]) {
+        newCartItems[menuId].push(positionId);
+        newCartItems.count = newCartItems.count + 1;
+      } else {
+        newCartItems[menuId] = [];
+        newCartItems[menuId].push(positionId);
+        newCartItems.count = newCartItems.count + 1;
+      }
+
+      return newCartItems;
+    })
   };
 
   return (
@@ -48,15 +56,23 @@ function App() {
             <Sidebar menuItems={menuItems}/>
           </div>
           <div className="main-content-wrap">
-            <Route path="/" exact render={() => {
-              return <MainPage menuItems={menuItems}/>
-            }}/>
-            <Route path="/:menuHeader" render={({match}) => {
-              const {menuHeader}  = match.params;
-              const menuItem = getCurrentMenuItem(menuHeader);
-              return <MainContent menuItem={menuItem} addToCard={addToCard}/>
-            }}/>
-            <Redirect to="/"/>
+            <Switch>
+              <Route path="/" exact render={() => {
+                return <MainPage menuItems={menuItems}/>
+              }}/>
+              <Route path="/order"render={() => {
+                return <OrderPage cartItems={cartItems} menu={menu}/>
+              }}/>
+              <Route path="/:menuHeader" render={({match}) => {
+                const {menuHeader}  = match.params;
+                const menuItem = getCurrentMenuItem(menuHeader);
+                if (menuItem) {
+                  return <MainContent menuItem={menuItem} addToCard={addToCard}/>
+                } else {
+                  return <Redirect to="/"/>
+                }
+              }}/>
+            </Switch>
           </div>
         </div>
       </React.Fragment>
