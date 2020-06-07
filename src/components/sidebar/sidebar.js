@@ -7,7 +7,7 @@ const Sidebar = ({menuItems}) => {
   const Buttons = menuItems.map(item => {
     return (
      <Link
-       to={`/pizza-shop/${item.header}`}
+       to={`${process.env.PUBLIC_URL}/${item.header}`}
        key={item.id}>
       <button
         type="button"

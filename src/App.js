@@ -57,19 +57,19 @@ function App() {
           </div>
           <div className="main-content-wrap">
             <Switch>
-              <Route path="/pizza-shop" exact render={() => {
+              <Route path={`${process.env.PUBLIC_URL}`} exact render={() => {
                 return <MainPage menuItems={menuItems}/>
               }}/>
-              <Route path="/pizza-shop/order" render={() => {
+              <Route path={`${process.env.PUBLIC_URL}/order`} render={() => {
                 return <OrderPage cartItems={cartItems} menu={menu}/>
               }}/>
-              <Route path="/pizza-shop/:menuHeader" render={({match}) => {
+              <Route path={`${process.env.PUBLIC_URL}/:menuHeader`} render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
                   return <MainContent menuItem={menuItem} addToCard={addToCard}/>
                 } else {
-                  return <Redirect to="/pizza-shop"/>
+                  return <Redirect to={`${process.env.PUBLIC_URL}`}/>
                 }
               }}/>
             </Switch>

@@ -6,7 +6,7 @@ const MainPage = ({menuItems}) => {
     return (
       <Link
         className="btn btn-link"
-        to={`/${item.header}`}
+        to={`${process.env.PUBLIC_URL}/${item.header}`}
         key={item.id}>
         {item.header}
       </Link>
@@ -18,7 +18,7 @@ const MainPage = ({menuItems}) => {
       <h1>Welcome to Pizza-Shop!</h1>
       <h4 className="text-muted">Original italian pizzas with fresh dough and carefully selected natural ingredients.</h4>
       <hr className="my-4"/>
-        <h4>In our restaurants, pizzas are baked in a wood brick oven.</h4>
+        <h4>In our restaurants pizzas are baked in a wood brick oven.</h4>
         <h5>
           Our menu: {MenuLinks}
         </h5>
