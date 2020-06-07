@@ -6,7 +6,7 @@ const MainPage = ({menuItems}) => {
     return (
       <Link
         className="btn btn-link"
-        to={`${process.env.PUBLIC_URL}/${item.header}`}
+        to={`/menu/${item.header}`}
         key={item.id}>
         {item.header}
       </Link>

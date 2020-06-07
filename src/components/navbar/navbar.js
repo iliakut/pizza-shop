@@ -7,7 +7,7 @@ const Navbar = ({cartItems}) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-end sticky-top">
       <Link
-        to='/pizza-shop/order'>
+        to='/order'>
         <button className="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
           <svg className="bi bi-cart3"
                width="25px"

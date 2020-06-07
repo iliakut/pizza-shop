@@ -4,7 +4,7 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import "./App.css"
 import MainContent from "./components/mainContent/mainContent";
-import {BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
+import {HashRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 import MainPage from "./components/mainPage/mainPage";
 import OrderPage from "./components/orderPage/orderPage";
 
@@ -57,21 +57,21 @@ function App() {
           </div>
           <div className="main-content-wrap">
             <Switch>
-              <Route path={`${process.env.PUBLIC_URL}`} exact render={() => {
+              <Route path={`/`} exact render={() => {
                 return <MainPage menuItems={menuItems}/>
               }}/>
-              <Route path={`${process.env.PUBLIC_URL}/order`} render={() => {
+              <Route path={`/order`} render={() => {
                 return <OrderPage cartItems={cartItems} menu={menu}/>
               }}/>
-              <Route path={`${process.env.PUBLIC_URL}/:menuHeader`} render={({match}) => {
+              <Route path={`/menu/:menuHeader`} render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
                   return <MainContent menuItem={menuItem} addToCard={addToCard}/>
                 } else {
-                  return <Redirect to={`${process.env.PUBLIC_URL}`}/>
                 }
               }}/>
+              <Redirect to={`/`}/>
             </Switch>
           </div>
         </div>
