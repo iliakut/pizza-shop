@@ -4,7 +4,8 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import "./App.css"
 import MainContent from "./components/mainContent/mainContent";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+import MainPage from "./components/mainPage/mainPage";
 
 function App() {
   const [openMenuId, setOpenMenuId] = useState(1);
@@ -37,11 +38,15 @@ function App() {
             <Sidebar menuItems={menuItems}/>
           </div>
           <div className="main-content-wrap">
+            <Route path="/" exact render={() => {
+              return <MainPage menuItems={menuItems}/>
+            }}/>
             <Route path="/:menuHeader" render={({match}) => {
               const {menuHeader}  = match.params;
               const menuItem = getCurrentMenuItem(menuHeader);
               return <MainContent menuItem={menuItem}/>
             }}/>
+            <Redirect to="/"/>
           </div>
         </div>
       </React.Fragment>
