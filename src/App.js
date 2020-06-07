@@ -12,6 +12,7 @@ function App() {
   const [cartItems, setCartItems] = useState({count: 0});
   const menu = useMenu();
   let menuItems = [];
+  let flatMenu = [];
 
   if (menu) {
     menuItems = menu.map(item => {
@@ -20,6 +21,11 @@ function App() {
         id: item.id,
       }
     });
+
+    const keys = Object.keys(menu);
+    flatMenu = keys.flatMap(key => {
+      return menu[key].items;
+    })
   }
 
   const getCurrentMenuItem = (name) => {
@@ -60,7 +66,7 @@ function App() {
                 return <MainPage menuItems={menuItems}/>
               }}/>
               <Route path={`/order`} render={() => {
-                return <OrderPage cartItems={cartItems} menu={menu}/>
+                return <OrderPage cartItems={cartItems} flatMenu={flatMenu}/>
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {
                 const {menuHeader}  = match.params;
