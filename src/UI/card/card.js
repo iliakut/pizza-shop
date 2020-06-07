@@ -1,7 +1,16 @@
 import React from "react";
 import "./card.css"
 
-const Card = ({name, description, imageUrl}) => {
+const Card = (
+  {
+    name,
+    description,
+    imageUrl,
+    priceFirst,
+    priceFirstSymbol,
+    priceSecond,
+    priceSecondSymbol
+  }) => {
   return (
     <div className="card mr-3 mb-2 border-secondary card-component">
       <h3 className="card-header">{name}</h3>
@@ -16,7 +25,14 @@ const Card = ({name, description, imageUrl}) => {
           <p className="card-text">{description}</p>
         </div>
         <div className="card-footer text-muted d-flex justify-content-between align-items-baseline">
-          price
+          <span>
+          {`${priceFirst}${priceFirstSymbol}`}
+          {
+            priceSecond
+              ? ` / ${priceSecond}${priceSecondSymbol}`
+              : null
+          }
+          </span>
           <button className="btn btn-secondary">Add +</button>
         </div>
     </div>

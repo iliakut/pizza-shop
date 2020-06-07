@@ -8,12 +8,18 @@ const MainContent = ({menuItem}) => {
 
   if (menuPositions) {
     Cards = menuPositions.map(position => {
+      const priceEuro = position.price.toFixed(2);
+      const priceDollar = (position.price * 1.13).toFixed(2);
       return (
         <Card
           key={header + position.id}
           name={position.name}
           description={position.description}
           imageUrl={position.img}
+          priceFirst={priceEuro}
+          priceFirstSymbol={'€'}
+          priceSecond={priceDollar}
+          priceSecondSymbol={'$'}
         />
       )
     }) ;
