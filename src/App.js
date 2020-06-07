@@ -57,19 +57,19 @@ function App() {
           </div>
           <div className="main-content-wrap">
             <Switch>
-              <Route path="/" exact render={() => {
+              <Route path="/pizza-shop" exact render={() => {
                 return <MainPage menuItems={menuItems}/>
               }}/>
-              <Route path="/order"render={() => {
+              <Route path="/pizza-shop/order" render={() => {
                 return <OrderPage cartItems={cartItems} menu={menu}/>
               }}/>
-              <Route path="/:menuHeader" render={({match}) => {
+              <Route path="/pizza-shop/:menuHeader" render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
                   return <MainContent menuItem={menuItem} addToCard={addToCard}/>
                 } else {
-                  return <Redirect to="/"/>
+                  return <Redirect to="/pizza-shop"/>
                 }
               }}/>
             </Switch>
