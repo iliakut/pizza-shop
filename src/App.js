@@ -37,7 +37,7 @@ function App() {
     }
   };
 
-  const addToCard = (positionId) => {
+  const addToCart = (positionId) => {
     setCartItems(cartItems => {
       const newCartItems = {...cartItems};
 
@@ -53,6 +53,25 @@ function App() {
     })
   };
 
+  const removeFromCart = (positionId) => {
+    setCartItems(cartItems => {
+      const newCartItems = {...cartItems};
+      if (newCartItems.count === 0) {
+        return
+      }
+
+      newCartItems.count = newCartItems.count - 1;
+      newCartItems[positionId] = newCartItems[positionId] - 1;
+
+      if (newCartItems[positionId] === 0) {
+         delete newCartItems[positionId]
+      }
+
+      return newCartItems;
+    })
+  };
+
+
   return (
     <Router>
       <React.Fragment>
@@ -67,13 +86,19 @@ function App() {
                 return <MainPage menuItems={menuItems}/>
               }}/>
               <Route path={`/order`} render={() => {
-                return <OrderPage cartItems={cartItems} flatMenu={flatMenu} currencyRate={currencyRate}/>
+                return <OrderPage
+                  cartItems={cartItems}
+                  flatMenu={flatMenu}
+                  currencyRate={currencyRate}
+                  addToCart={addToCart}
+                  removeFromCart={removeFromCart}
+                />
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
-                  return <MainContent menuItem={menuItem} addToCard={addToCard} currencyRate={currencyRate}/>
+                  return <MainContent menuItem={menuItem} addToCart={addToCart} currencyRate={currencyRate}/>
                 } else if (menu) {
                   return <Redirect to={`/`}/>
                 }

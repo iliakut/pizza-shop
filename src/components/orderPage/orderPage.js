@@ -1,7 +1,7 @@
 import React from "react";
 import "./orderPage.css"
 
-const OrderPage = ({cartItems, flatMenu, currencyRate}) => {
+const OrderPage = ({cartItems, flatMenu, currencyRate, addToCart, removeFromCart}) => {
   console.log(cartItems, flatMenu);
   const newCartItems = {...cartItems};
   delete newCartItems.count;
@@ -21,18 +21,18 @@ const OrderPage = ({cartItems, flatMenu, currencyRate}) => {
           <h4>{name}</h4>
         <img
           className="image-order border border-secondary rounded"
-          src={menuItem.img}
-          alt={menuItem.name}
+          src={img}
+          alt={name}
         />
         </div>
         <div className="mb-3">
-          <button type="button" className="btn btn-secondary">
+          <button type="button" className="btn btn-secondary" onClick={() => removeFromCart(id)}>
             <strong>
               -
             </strong>
           </button>
           <span className="mx-2">{quantity}</span>
-          <button type="button" className="btn btn-secondary">
+          <button type="button" className="btn btn-secondary" onClick={() => addToCart(id)}>
             <strong>
               +
             </strong>
