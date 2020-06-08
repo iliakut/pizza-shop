@@ -1,0 +1,18 @@
+.order-page {
+
+}
+
+.order-item {
+    background-color: #b6dce1;
+}
+
+.image-order {
+    height: auto;
+    width: 150px;
+}
+
+@media (max-width: 768px) {
+    .image-order {
+        width: 90%;
+    }
+}

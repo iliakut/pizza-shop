@@ -60,7 +60,7 @@ function App() {
           <div className="flex-shrink-1 sidebar-wrap">
             <Sidebar menuItems={menuItems}/>
           </div>
-          <div className="main-content-wrap">
+          <div className="main-content-wrap w-100">
             <Switch>
               <Route path={`/`} exact render={() => {
                 return <MainPage menuItems={menuItems}/>
