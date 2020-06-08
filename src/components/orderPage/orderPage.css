@@ -1,8 +1,10 @@
 .order-page {
-
 }
 
 .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #b6dce1;
     max-width: 1200px;
     border-radius: 15px;
@@ -22,8 +24,18 @@
     width: 150px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
+    .order-item {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image-wrap {
+        width: 80%;
+    }
+
     .image-order {
-        width: 90%;
+        width: 100%;
     }
 }

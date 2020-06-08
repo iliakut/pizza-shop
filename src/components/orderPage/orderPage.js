@@ -16,16 +16,16 @@ const OrderPage = ({cartItems, flatMenu, currencyRate}) => {
     const allPriceDollars = (allPrice * currencyRate).toFixed(2);
 
     return (
-      <div key={id} className="mb-3 mr-5 p-3 order-item d-flex justify-content-between align-items-center">
-        <div>
+      <div key={id} className="mb-3 mr-5 p-3 order-item">
+        <div className="mb-3 image-wrap">
           <h4>{name}</h4>
         <img
-          className="image-order mr-2 border border-secondary rounded"
+          className="image-order border border-secondary rounded"
           src={menuItem.img}
           alt={menuItem.name}
         />
         </div>
-        <div>
+        <div className="mb-3">
           <button type="button" className="btn btn-secondary">
             <strong>
               -
