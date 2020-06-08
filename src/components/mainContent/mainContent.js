@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../UI/card/card";
 
-const MainContent = ({menuItem, addToCard}) => {
+const MainContent = ({menuItem, addToCard, currencyRate}) => {
   const header = menuItem?.header;
   const menuPositions = menuItem?.items;
   let Cards;
@@ -9,7 +9,7 @@ const MainContent = ({menuItem, addToCard}) => {
   if (menuPositions) {
     Cards = menuPositions.map(position => {
       const priceEuro = position.price.toFixed(2);
-      const priceDollar = (position.price * 1.13).toFixed(2);
+      const priceDollar = (position.price * currencyRate).toFixed(2);
       return (
         <Card
           key={header + position.id}

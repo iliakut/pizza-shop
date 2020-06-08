@@ -13,6 +13,7 @@ function App() {
   const menu = useMenu();
   let menuItems = [];
   let flatMenu = [];
+  const currencyRate = 1.13;
 
   if (menu) {
     menuItems = menu.map(item => {
@@ -66,13 +67,13 @@ function App() {
                 return <MainPage menuItems={menuItems}/>
               }}/>
               <Route path={`/order`} render={() => {
-                return <OrderPage cartItems={cartItems} flatMenu={flatMenu}/>
+                return <OrderPage cartItems={cartItems} flatMenu={flatMenu} currencyRate={currencyRate}/>
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
-                  return <MainContent menuItem={menuItem} addToCard={addToCard}/>
+                  return <MainContent menuItem={menuItem} addToCard={addToCard} currencyRate={currencyRate}/>
                 } else if (menu) {
                   return <Redirect to={`/`}/>
                 }

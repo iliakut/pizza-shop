@@ -4,6 +4,17 @@
 
 .order-item {
     background-color: #b6dce1;
+    max-width: 1200px;
+    border-radius: 15px;
+}
+
+.order-item button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 100%;
+
 }
 
 .image-order {
