@@ -73,7 +73,8 @@ function App() {
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
                   return <MainContent menuItem={menuItem} addToCard={addToCard}/>
-                } else {
+                } else if (menu) {
+                  return <Redirect to={`/`}/>
                 }
               }}/>
               <Redirect to={`/`}/>
