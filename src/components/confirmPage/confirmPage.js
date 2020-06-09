@@ -127,7 +127,7 @@ const ConfirmPage = ({price, cartItems, clearCart, saveOrderToHistory}) => {
             <h1>
               Confirmation
             </h1>
-            <Link to={'/order'}>to order page</Link>
+            <Link to="/order">to order page</Link>
             {
               isEmptyOrder
                 ? <NoItemsBanner/>

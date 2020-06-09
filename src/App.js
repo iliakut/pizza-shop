@@ -182,12 +182,12 @@ function App() {
                     </ErrorBoundary>
                   )
                 } else if (menu || isError) {
-                  return <Redirect to={`/`}/>
+                  return <Redirect to="/"/>
                 }
               }}/>
               <Route path="/confirm" render={() => {
                 if (isError) {
-                  return <Redirect to={`/`}/>
+                  return <Redirect to="/"/>
                 }
                 if (isLoading) {
                   return <Spinner/>

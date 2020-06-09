@@ -16,7 +16,7 @@ class ErrorBoundary extends Component {
       return (
         <div className="alert alert-danger m-3">
           Something went wrong. Try
-          <Link to={'/'}> Main page</Link>
+          <Link to="/"> Main page</Link>
         </div>
       )
     }
