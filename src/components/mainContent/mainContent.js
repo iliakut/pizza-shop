@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../UI/card/card";
 
-const MainContent = ({menuItem, addToCart, currencyRate}) => {
+const MainContent = ({menuItem, addToCart}) => {
   const header = menuItem?.header;
   const menuPositions = menuItem?.items;
   let Cards;

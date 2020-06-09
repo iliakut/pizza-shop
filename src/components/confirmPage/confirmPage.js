@@ -4,7 +4,13 @@ import getPriceString from "../../helpers/functions/getPriceString";
 import {Link} from "react-router-dom";
 import NoItemsBanner from "../noItemsBanner/noItemsBanner";
 
-const ConfirmPage = ({price, cartItems, clearCart, saveOrderToHistory}) => {
+const ConfirmPage = (
+  {
+    price,
+    cartItems,
+    clearCart,
+    saveOrderToHistory
+  }) => {
 
   const [validForm, setValidForm] = useState({
     name: false,
@@ -108,14 +114,24 @@ const ConfirmPage = ({price, cartItems, clearCart, saveOrderToHistory}) => {
       />
       <div className="form-group">
         <label htmlFor="commentsArea">Comments</label>
-        <textarea className="form-control" id="commentsArea" rows="3" disabled={isConfirmed}></textarea>
+        <textarea
+          className="form-control"
+          id="commentsArea"
+          rows="3"
+          disabled={isConfirmed}>
+        </textarea>
       </div>
       {
         isConfirmed
           ? OrderConfirmedBanner
           : OrderInformationBanner
       }
-      <button type="submit" className={btnClasses} onClick={(event) => onClick(event)}>CONFIRM</button>
+      <button
+        type="submit"
+        className={btnClasses}
+        onClick={(event) => onClick(event)}
+      >CONFIRM
+      </button>
     </React.Fragment>
   );
 

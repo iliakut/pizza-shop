@@ -23,7 +23,7 @@ const OrderPage = (
   delete newCartItems.count;
   const itemIds = Object.keys(newCartItems);
 
-  const parceMenuItem = (id, flatMenu) => {
+  const parseMenuItem = (id, flatMenu) => {
     let name = 'Pizza Name';
     let price = 0;
     let img = '';
@@ -48,7 +48,7 @@ const OrderPage = (
   };
 
   const CartItems = itemIds.map(id => {
-    const itemData = parceMenuItem(id, flatMenu);
+    const itemData = parseMenuItem(id, flatMenu);
 
     const orderProps = {
       id,

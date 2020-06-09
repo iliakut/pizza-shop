@@ -8,7 +8,8 @@ const SidebarPlaceholder = () => {
         key={index}
         type="button"
         className="btn btn-primary mt-2 w-100">
-        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true">
+        </span>
         Loading...
       </button>
     )
