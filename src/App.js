@@ -10,6 +10,7 @@ import OrderPage from "./components/orderPage/orderPage";
 
 function App() {
   const [cartItems, setCartItems] = useState({count: 0});
+  const [mainPrice, setMainPrice] = useState(0);
   const menu = useMenu();
   let menuItems = [];
   let flatMenu = [];
