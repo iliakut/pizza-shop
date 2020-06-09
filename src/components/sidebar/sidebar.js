@@ -2,9 +2,10 @@ import React from "react";
 import "./sidebar.css"
 import Burger from "../../UI/burger/burger";
 import {Link} from "react-router-dom";
+import SidebarPlaceholder from "./sidebarPlaceholder/sidebarPlaceholder";
 
 const Sidebar = ({menuItems}) => {
-  const Buttons = menuItems.map(item => {
+  let Buttons = menuItems.map(item => {
     return (
      <Link
        to={`/menu/${item.header}`}
@@ -18,12 +19,16 @@ const Sidebar = ({menuItems}) => {
     )
   });
 
+  if (!Buttons.length) {
+    Buttons = <SidebarPlaceholder/>
+  }
+
   return (
     <div className="sidebar rounded m-2 px-2 pb-2">
-      <div className="sidebar__items">
+      <div className="sidebar-items">
         {Buttons}
       </div>
-      <div className="sidebar__burger-menu">
+      <div className="sidebar-burger-menu">
         <Burger>
           {Buttons}
         </Burger>
