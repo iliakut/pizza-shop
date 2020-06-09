@@ -4,6 +4,7 @@ import OrderItem from "./orderItem/orderItem";
 import getPriceString from "../../helpers/functions/getPriceString";
 import {Link} from "react-router-dom";
 import NoItemsBanner from "../noItemsBanner/noItemsBanner";
+import OrderHistory from "./orderHistory/orderHistory";
 
 const OrderPage = (
   {
@@ -14,19 +15,19 @@ const OrderPage = (
     addToCart,
     removeFromCart,
     deleteFromCart,
+    orderHistory,
   }) => {
 
   const newCartItems = {...cartItems};
   delete newCartItems.count;
   const itemIds = Object.keys(newCartItems);
 
-  const CartItems = itemIds.map(id => {
+  const parceMenuItem = (id, flatMenu) => {
     let name = 'Pizza Name';
     let price = 0;
     let img = '';
     let quantity = 1;
     let priceString = '';
-
     const menuItem = flatMenu.find(item => Number(item.id) === Number(id));
     if (menuItem) {
       name = menuItem.name;
@@ -37,12 +38,20 @@ const OrderPage = (
       priceString = getPriceString(allPrice, currencyRate);
     }
 
-    const orderProps = {
-      id,
+    return {
       name,
       img,
       quantity,
       priceString,
+    }
+  };
+
+  const CartItems = itemIds.map(id => {
+    const itemData = parceMenuItem(id, flatMenu);
+
+    const orderProps = {
+      id,
+      ...itemData,
       addToCart,
       removeFromCart,
       deleteFromCart,
@@ -77,6 +86,7 @@ const OrderPage = (
           ? OrderButton
           : null
       }
+      <OrderHistory orderHistory={orderHistory}/>
     </div>
   );
 };

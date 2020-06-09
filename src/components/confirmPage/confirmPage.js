@@ -13,7 +13,7 @@ const ConfirmPage = ({price, cartItems, clearCart, saveOrderToHistory}) => {
   });
   const [isAllValid, setAllValid] = useState(true);
   const [isConfirmed, setConfirmed] = useState(false);
-  const orderNumber = (Math.random() * 100000).toFixed();
+  const orderNumber = (Math.random() * 1000).toFixed();
   const totalPrice = price + 10;
   const deliveryCost = getPriceString(10);
   const totalPriceString = getPriceString(totalPrice);
@@ -49,7 +49,8 @@ const ConfirmPage = ({price, cartItems, clearCart, saveOrderToHistory}) => {
     event.preventDefault();
     if (isAllValid && !isConfirmed) {
       setConfirmed(true);
-      saveOrderToHistory(orderNumber, cartItems);
+      const timeStamp = Date.now();
+      saveOrderToHistory(timeStamp, cartItems);
       clearCart();
     }
   };

@@ -100,7 +100,7 @@ function App() {
   const saveOrderToHistory = (key, order) => {
     setOrderHistory(oldVal => {
       const newVal = [...oldVal];
-      newVal.push({key: order});
+      newVal.push({[key]: order});
       return newVal;
     })
   };
@@ -128,6 +128,7 @@ function App() {
                   addToCart={addToCart}
                   removeFromCart={removeFromCart}
                   deleteFromCart={deleteFromCart}
+                  orderHistory={orderHistory}
                 />
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {
