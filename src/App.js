@@ -10,9 +10,11 @@ import OrderPage from "./components/orderPage/orderPage";
 import calcPrice from "./helpers/functions/calcPrice";
 import getPriceString from "./helpers/functions/getPriceString";
 import ConfirmPage from "./components/confirmPage/confirmPage";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [cartItems, setCartItems] = useState({count: 0});
+  const [cartItems, setCartItems] = useLocalStorage('cartItems', {count: 0});
+  console.log(cartItems);
   const menu = useMenu();
   let menuItems = [];
   let flatMenu = [];
