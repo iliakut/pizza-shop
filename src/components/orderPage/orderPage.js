@@ -17,15 +17,17 @@ const OrderPage = ({cartItems, flatMenu, currencyRate, addToCart, removeFromCart
 
     return (
       <div key={id} className="mb-3 mr-5 p-3 order-item">
-        <div className="mb-3 image-wrap">
-          <h4>{name}</h4>
+        <div className="mb-3 image-order-wrap">
+          <span>
+            <strong>{name}</strong>
+          </span>
         <img
           className="image-order border border-secondary rounded"
           src={img}
           alt={name}
         />
         </div>
-        <div className="mb-3">
+        <div className="my-1">
           <button type="button" className="btn btn-secondary" onClick={() => removeFromCart(id)}>
             <strong>
               -
@@ -38,7 +40,7 @@ const OrderPage = ({cartItems, flatMenu, currencyRate, addToCart, removeFromCart
             </strong>
           </button>
         </div>
-        <div>
+        <div className="my-1">
           <span className="mr-2">{`${allPrice}€ / ${allPriceDollars}$`}</span>
           <button type="button" className="btn btn-secondary">
             <strong>

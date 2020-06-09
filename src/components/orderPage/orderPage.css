@@ -1,5 +1,3 @@
-.order-page {
-}
 
 .order-item {
     display: flex;
@@ -19,9 +17,17 @@
 
 }
 
-.image-order {
+.order-item .image-order {
     height: auto;
     width: 150px;
+}
+
+.order-item .image-order-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
 }
 
 @media (max-width: 800px) {
@@ -31,11 +37,11 @@
         align-items: center;
     }
 
-    .image-wrap {
+    .order-item .image-order-wrap {
         width: 80%;
     }
 
-    .image-order {
+    .order-item .image-order {
         width: 100%;
     }
 }
