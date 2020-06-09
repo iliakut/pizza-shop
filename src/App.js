@@ -91,6 +91,10 @@ function App() {
     })
   };
 
+  const clearCart = () => {
+    setCartItems({count: 0});
+  };
+
 
   return (
     <Router>
@@ -132,7 +136,8 @@ function App() {
               <Route path={`/confirm`} render={() => {
                 return <ConfirmPage
                   price={mainPrice}
-                  pricesString={pricesString}/>
+                  pricesString={pricesString}
+                  clearCart={clearCart}/>
               }}/>
               <Redirect to={`/`}/>
             </Switch>

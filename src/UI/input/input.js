@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Input = ({inputId, label, placeholder, warningMessage, setValidForm}) => {
+const Input = ({inputId, label, placeholder, warningMessage, setValidForm, disabled}) => {
   const [isValid, setValid] = useState(true);
   const [value, setValue] = useState('');
 
@@ -37,6 +37,7 @@ const Input = ({inputId, label, placeholder, warningMessage, setValidForm}) => {
         value={value}
         onChange={(event) => onInput(event)}
         onBlur={() => checkValid(value)}
+        disabled={disabled}
       />
       <div className="invalid-feedback">
         {warningMessage}

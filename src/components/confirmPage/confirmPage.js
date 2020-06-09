@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Input from "../../UI/input/input";
 import getPriceString from "../../helpers/functions/getPriceString";
 
-const ConfirmPage = ({price, pricesString}) => {
+const ConfirmPage = ({price, pricesString, clearCart}) => {
 
   const [validForm, setValidForm] = useState({
     name: false,
@@ -11,11 +11,12 @@ const ConfirmPage = ({price, pricesString}) => {
   });
   const [isAllValid, setAllValid] = useState(true);
   const [isConfirmed, setConfirmed] = useState(false);
+  const deliveryCost = getPriceString(10);
   let btnClasses = 'btn btn-info';
-  if (!isAllValid) {
+
+  if (!isAllValid || isConfirmed) {
     btnClasses += ' disabled';
   }
-  const deliveryCost = getPriceString(10);
 
   useEffect(() => {
     const values = Object.values(validForm);
@@ -40,8 +41,9 @@ const ConfirmPage = ({price, pricesString}) => {
 
   const onClick = (event) => {
     event.preventDefault();
-    if (isAllValid) {
+    if (isAllValid && !isConfirmed) {
       setConfirmed(true);
+      clearCart();
     }
   };
 
@@ -80,35 +82,38 @@ const ConfirmPage = ({price, pricesString}) => {
         </legend>
         <Input
           inputId="nameInput"
-          label="Name"
+          label="Name*"
           placeholder="Enter your name"
           warningMessage="Please enter your name"
           setValidForm={(isValid) => validateForm('name', isValid)}
+          disabled={isConfirmed}
         />
         <Input
           inputId="surnameInput"
-          label="Surname"
+          label="Surname*"
           placeholder="Enter your surname"
           warningMessage="Please enter your surname"
           setValidForm={(isValid) => validateForm('surname', isValid)}
+          disabled={isConfirmed}
         />
         <Input
           inputId="addressInput"
-          label="Address"
+          label="Address*"
           placeholder="Enter your address"
           warningMessage="Please enter your Address"
           setValidForm={(isValid) => validateForm('address', isValid)}
+          disabled={isConfirmed}
         />
         <div className="form-group">
           <label htmlFor="commentsArea">Comments</label>
-          <textarea className="form-control" id="commentsArea" rows="3"></textarea>
+          <textarea className="form-control" id="commentsArea" rows="3" disabled={isConfirmed}></textarea>
         </div>
         {
           isConfirmed
             ? OrderConfirmedBanner
             : OrderInformationBanner
         }
-        <button type="submit" className={btnClasses} onClick={(event) => onClick(event)}>Submit</button>
+        <button type="submit" className={btnClasses} onClick={(event) => onClick(event)}>CONFIRM</button>
       </fieldset>
     </form>
   );
