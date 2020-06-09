@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Input from "../../UI/input/input";
 import getPriceString from "../../helpers/functions/getPriceString";
 import {Link} from "react-router-dom";
+import NoItemsBanner from "../noItemsBanner/noItemsBanner";
 
 const ConfirmPage = ({price, cartItems, clearCart}) => {
 
@@ -76,12 +77,6 @@ const ConfirmPage = ({price, cartItems, clearCart}) => {
     </div>
   );
 
-  const EmptyCartBanner = (
-    <div className="alert alert-secondary">
-      <p className="mb-0">You have no items in your shopping cart</p>
-    </div>
-  );
-
   const FormContent = (
     <React.Fragment>
       <Input
@@ -132,7 +127,7 @@ const ConfirmPage = ({price, cartItems, clearCart}) => {
             <Link to={'/order'}>to order page</Link>
             {
               isEmptyOrder
-                ? EmptyCartBanner
+                ? <NoItemsBanner/>
                 : null
             }
           </legend>

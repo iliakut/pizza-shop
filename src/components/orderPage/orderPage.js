@@ -3,6 +3,7 @@ import "./orderPage.css"
 import OrderItem from "./orderItem/orderItem";
 import getPriceString from "../../helpers/functions/getPriceString";
 import {Link} from "react-router-dom";
+import NoItemsBanner from "../noItemsBanner/noItemsBanner";
 
 const OrderPage = (
   {
@@ -68,7 +69,7 @@ const OrderPage = (
       {
         itemsLength
           ? CartItems
-          : <h3>You have no items in your shopping cart.</h3>
+          : <NoItemsBanner/>
       }
       <h3>{pricesString}</h3>
       {
