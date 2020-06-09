@@ -7,8 +7,7 @@ const OrderItem = (
     name,
     img,
     quantity,
-    allPrice,
-    allPriceDollars,
+    priceString,
     addToCart,
     removeFromCart,
     deleteFromCart,
@@ -39,7 +38,7 @@ const OrderItem = (
         </button>
       </div>
       <div className="my-1">
-        <span className="mr-2">{`${allPrice}€ / ${allPriceDollars}$`}</span>
+        <span className="mr-2">{priceString}</span>
         <button type="button" className="btn btn-secondary" onClick={() => deleteFromCart(id)}>
           <strong>
             x

@@ -8,8 +8,6 @@ const MainContent = ({menuItem, addToCart, currencyRate}) => {
 
   if (menuPositions) {
     Cards = menuPositions.map(position => {
-      const priceEuro = position.price.toFixed(2);
-      const priceDollar = (position.price * currencyRate).toFixed(2);
       return (
         <Card
           key={header + position.id}
@@ -17,10 +15,7 @@ const MainContent = ({menuItem, addToCart, currencyRate}) => {
           description={position.description}
           imageUrl={position.img}
           addToCart={() => addToCart(position.id)}
-          priceFirst={priceEuro}
-          priceFirstSymbol={'€'}
-          priceSecond={priceDollar}
-          priceSecondSymbol={'$'}
+          price={position.price}
         />
       )
     }) ;

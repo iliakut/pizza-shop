@@ -1,12 +1,14 @@
 import React from "react";
 import "./orderPage.css"
 import OrderItem from "./orderItem/orderItem";
+import getPriceString from "../../helpers/functions/getPriceString";
 
 const OrderPage = (
   {
     cartItems,
     flatMenu,
     currencyRate,
+    pricesString,
     addToCart,
     removeFromCart,
     deleteFromCart,
@@ -14,24 +16,21 @@ const OrderPage = (
 
   const newCartItems = {...cartItems};
   delete newCartItems.count;
-  let mainPrice = 0;
   const itemIds = Object.keys(newCartItems);
 
   const CartItems = itemIds.map(id => {
     const menuItem = flatMenu.find(item => Number(item.id) === Number(id));
     const {name, img, price} = menuItem;
     const quantity = newCartItems[id];
-    const allPrice = (price * quantity).toFixed(2);
-    const allPriceDollars = (allPrice * currencyRate).toFixed(2);
-    mainPrice += price * quantity;
+    const allPrice = (price * quantity);
+    const priceString = getPriceString(allPrice, currencyRate);
 
     const orderProps = {
       id,
       name,
       img,
       quantity,
-      allPrice,
-      allPriceDollars,
+      priceString,
       addToCart,
       removeFromCart,
       deleteFromCart,
@@ -45,9 +44,6 @@ const OrderPage = (
     )
   });
 
-  const mainPriceDollars = mainPrice * currencyRate;
-  const mainPriceString = mainPrice.toFixed(2);
-  const mainPriceDollarsString = mainPriceDollars.toFixed(2);
   const itemsLength = CartItems.length;
 
   return (
@@ -58,7 +54,7 @@ const OrderPage = (
           ? CartItems
           : <h3>You have no items in your shopping cart.</h3>
       }
-      <h3>{`${mainPriceString}€ / ${mainPriceDollarsString}$`}</h3>
+      <h3>{pricesString}</h3>
       {
         itemsLength
           ? <button type="button" className="btn btn-info mb-5">ORDER NOW</button>

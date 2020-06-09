@@ -109,6 +109,7 @@ function App() {
                   cartItems={cartItems}
                   flatMenu={flatMenu}
                   currencyRate={currencyRate}
+                  pricesString={pricesString}
                   addToCart={addToCart}
                   removeFromCart={removeFromCart}
                   deleteFromCart={deleteFromCart}
@@ -118,7 +119,11 @@ function App() {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
-                  return <MainContent menuItem={menuItem} addToCart={addToCart} currencyRate={currencyRate}/>
+                  return <MainContent
+                    menuItem={menuItem}
+                    addToCart={addToCart}
+                    currencyRate={currencyRate}
+                  />
                 } else if (menu) {
                   return <Redirect to={`/`}/>
                 }
