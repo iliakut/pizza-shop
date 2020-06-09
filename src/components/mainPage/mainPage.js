@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Spinner from "../../UI/spinner/spinner";
 
 const MainPage = ({menuItems}) => {
   const MenuLinks = menuItems.map(item => {
@@ -18,10 +19,13 @@ const MainPage = ({menuItems}) => {
       <h1>Welcome to Pizza-Shop!</h1>
       <h4 className="text-muted">Original italian pizzas with fresh dough and carefully selected natural ingredients.</h4>
       <hr className="my-4"/>
-        <h4>In our restaurants pizzas are baked in a wood brick oven.</h4>
-        <h5>
-          Our menu: {MenuLinks}
-        </h5>
+      <h4>In our restaurants pizzas are baked in a wood brick oven.</h4>
+      <h5>Our menu:</h5>
+      {
+        MenuLinks.length
+        ? <h5>{MenuLinks}</h5>
+        : <Spinner/>
+      }
     </div>
   );
 };
