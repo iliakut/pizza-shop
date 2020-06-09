@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import Input from "../../UI/input/input";
 import getPriceString from "../../helpers/functions/getPriceString";
+import {Link} from "react-router-dom";
 
-const ConfirmPage = ({price, pricesString, clearCart}) => {
+const ConfirmPage = ({price, clearCart}) => {
 
   const [validForm, setValidForm] = useState({
     name: false,
@@ -11,7 +12,9 @@ const ConfirmPage = ({price, pricesString, clearCart}) => {
   });
   const [isAllValid, setAllValid] = useState(true);
   const [isConfirmed, setConfirmed] = useState(false);
+  const totalPrice = price + 10;
   const deliveryCost = getPriceString(10);
+  const totalPriceString = getPriceString(totalPrice);
   let btnClasses = 'btn btn-info';
 
   if (!isAllValid || isConfirmed) {
@@ -49,14 +52,14 @@ const ConfirmPage = ({price, pricesString, clearCart}) => {
 
   const DeliveryInformation = (
     <React.Fragment>
-      <p className="mb-0">Delivery {deliveryCost}</p>
+      <p className="mb-0">Delivery {deliveryCost} (already included)</p>
       <p className="mb-0">(Delivery is free if your total price is more than 250€ / 282.5$)</p>
     </React.Fragment>
   );
 
   const OrderInformationBanner = (
     <div className="alert alert-warning">
-      <p className="mb-0">Total price: {pricesString}</p>
+      <p className="mb-0">Total price: {totalPriceString}</p>
       {
         price >= 250
           ? null
@@ -79,6 +82,7 @@ const ConfirmPage = ({price, pricesString, clearCart}) => {
           <h1>
             Confirmation
           </h1>
+          <Link to={'/order'}>back to order page</Link>
         </legend>
         <Input
           inputId="nameInput"
