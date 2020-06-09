@@ -1,5 +1,6 @@
 import React from "react";
 import "./orderPage.css"
+import OrderItem from "./orderItem/orderItem";
 
 const OrderPage = (
   {
@@ -25,56 +26,78 @@ const OrderPage = (
     const allPriceDollars = (allPrice * currencyRate).toFixed(2);
     mainPrice += price * quantity;
 
+    const orderProps = {
+      id,
+      name,
+      img,
+      quantity,
+      allPrice,
+      allPriceDollars,
+      addToCart,
+      removeFromCart,
+      deleteFromCart,
+    };
+
     return (
-      <div key={id} className="mb-3 mr-5 p-3 order-item">
-        <div className="mb-3 image-order-wrap">
-          <span>
-            <strong>{name}</strong>
-          </span>
-        <img
-          className="image-order border border-secondary rounded"
-          src={img}
-          alt={name}
-        />
-        </div>
-        <div className="my-1">
-          <button type="button" className="btn btn-secondary" onClick={() => removeFromCart(id)}>
-            <strong>
-              -
-            </strong>
-          </button>
-          <span className="mx-2">{quantity}</span>
-          <button type="button" className="btn btn-secondary" onClick={() => addToCart(id)}>
-            <strong>
-              +
-            </strong>
-          </button>
-        </div>
-        <div className="my-1">
-          <span className="mr-2">{`${allPrice}€ / ${allPriceDollars}$`}</span>
-          <button type="button" className="btn btn-secondary" onClick={() => deleteFromCart(id)}>
-            <strong>
-              x
-            </strong>
-          </button>
-        </div>
-      </div>
+      <OrderItem
+        key={id}
+        {...orderProps}
+      />
+      // <div key={id} className="mb-3 mr-5 p-3 order-item">
+      //   <div className="mb-3 image-order-wrap">
+      //     <span>
+      //       <strong>{name}</strong>
+      //     </span>
+      //   <img
+      //     className="image-order border border-secondary rounded"
+      //     src={img}
+      //     alt={name}
+      //   />
+      //   </div>
+      //   <div className="my-1">
+      //     <button type="button" className="btn btn-secondary" onClick={() => removeFromCart(id)}>
+      //       <strong>
+      //         -
+      //       </strong>
+      //     </button>
+      //     <span className="mx-2">{quantity}</span>
+      //     <button type="button" className="btn btn-secondary" onClick={() => addToCart(id)}>
+      //       <strong>
+      //         +
+      //       </strong>
+      //     </button>
+      //   </div>
+      //   <div className="my-1">
+      //     <span className="mr-2">{`${allPrice}€ / ${allPriceDollars}$`}</span>
+      //     <button type="button" className="btn btn-secondary" onClick={() => deleteFromCart(id)}>
+      //       <strong>
+      //         x
+      //       </strong>
+      //     </button>
+      //   </div>
+      // </div>
     )
   });
 
   const mainPriceDollars = mainPrice * currencyRate;
   const mainPriceString = mainPrice.toFixed(2);
   const mainPriceDollarsString = mainPriceDollars.toFixed(2);
+  const itemsLength = CartItems.length;
 
   return (
     <div className="mr-2 mt-2 order-page">
       <h1>Order</h1>
       {
-        CartItems.length
+        itemsLength
           ? CartItems
           : <h3>You have no items in your shopping cart.</h3>
       }
       <h3>{`${mainPriceString}€ / ${mainPriceDollarsString}$`}</h3>
+      {
+        itemsLength
+          ? <button type="button" className="btn btn-info">ORDER NOW</button>
+          : null
+      }
     </div>
   );
 };
