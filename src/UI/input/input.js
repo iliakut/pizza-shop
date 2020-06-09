@@ -10,7 +10,8 @@ const Input = ({inputId, label, placeholder, warningMessage, setValidForm, disab
   };
 
   const checkValid = (value) => {
-    if (value === '') {
+    const string = value.split(' ').join('');
+    if (string === '') {
       setValid(false);
       setValidForm(false)
     }
