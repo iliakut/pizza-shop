@@ -138,6 +138,7 @@ function App() {
               <Route path={`/confirm`} render={() => {
                 return <ConfirmPage
                   price={mainPrice}
+                  cartItems={cartItems}
                   clearCart={clearCart}/>
               }}/>
               <Redirect to={`/`}/>
