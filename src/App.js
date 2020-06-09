@@ -9,6 +9,7 @@ import MainPage from "./components/mainPage/mainPage";
 import OrderPage from "./components/orderPage/orderPage";
 import calcPrice from "./helpers/functions/calcPrice";
 import getPriceString from "./helpers/functions/getPriceString";
+import ConfirmPage from "./components/confirmPage/confirmPage";
 
 function App() {
   const [cartItems, setCartItems] = useState({count: 0});
@@ -127,6 +128,10 @@ function App() {
                 } else if (menu) {
                   return <Redirect to={`/`}/>
                 }
+              }}/>
+              <Route path={`/confirm`} render={() => {
+                return <ConfirmPage
+                />
               }}/>
               <Redirect to={`/`}/>
             </Switch>

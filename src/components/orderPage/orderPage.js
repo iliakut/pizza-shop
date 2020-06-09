@@ -2,6 +2,7 @@ import React from "react";
 import "./orderPage.css"
 import OrderItem from "./orderItem/orderItem";
 import getPriceString from "../../helpers/functions/getPriceString";
+import {Link} from "react-router-dom";
 
 const OrderPage = (
   {
@@ -45,6 +46,11 @@ const OrderPage = (
   });
 
   const itemsLength = CartItems.length;
+  const OrderButton = (
+    <Link to="/confirm">
+      <button type="button" className="btn btn-info mb-5">ORDER NOW</button>
+    </Link>
+  );
 
   return (
     <div className="mr-2 mt-2 order-page">
@@ -57,7 +63,7 @@ const OrderPage = (
       <h3>{pricesString}</h3>
       {
         itemsLength
-          ? <button type="button" className="btn btn-info mb-5">ORDER NOW</button>
+          ? OrderButton
           : null
       }
     </div>
