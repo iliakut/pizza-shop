@@ -143,6 +143,9 @@ function App() {
                 )
               }}/>
               <Route path={`/order`} render={() => {
+                if (isError) {
+                  return <Redirect to={`/`}/>
+                }
                 return (
                   <ErrorBoundary>
                     <OrderPage
@@ -172,11 +175,14 @@ function App() {
                       />
                     </ErrorBoundary>
                   )
-                } else if (menu) {
+                } else if (menu || isError) {
                   return <Redirect to={`/`}/>
                 }
               }}/>
               <Route path={`/confirm`} render={() => {
+                if (isError) {
+                  return <Redirect to={`/`}/>
+                }
                 return (
                   <ErrorBoundary>
                     <ConfirmPage
