@@ -4,7 +4,7 @@ import getPriceString from "../../helpers/functions/getPriceString";
 import {Link} from "react-router-dom";
 import NoItemsBanner from "../noItemsBanner/noItemsBanner";
 
-const ConfirmPage = ({price, cartItems, clearCart}) => {
+const ConfirmPage = ({price, cartItems, clearCart, saveOrderToHistory}) => {
 
   const [validForm, setValidForm] = useState({
     name: false,
@@ -13,6 +13,7 @@ const ConfirmPage = ({price, cartItems, clearCart}) => {
   });
   const [isAllValid, setAllValid] = useState(true);
   const [isConfirmed, setConfirmed] = useState(false);
+  const orderNumber = (Math.random() * 100000).toFixed();
   const totalPrice = price + 10;
   const deliveryCost = getPriceString(10);
   const totalPriceString = getPriceString(totalPrice);
@@ -48,6 +49,7 @@ const ConfirmPage = ({price, cartItems, clearCart}) => {
     event.preventDefault();
     if (isAllValid && !isConfirmed) {
       setConfirmed(true);
+      saveOrderToHistory(orderNumber, cartItems);
       clearCart();
     }
   };
@@ -73,7 +75,7 @@ const ConfirmPage = ({price, cartItems, clearCart}) => {
   const OrderConfirmedBanner = (
     <div className="alert alert-success">
       <p className="mb-0">Your order has been confirmed</p>
-      <p className="mb-0">Order number: {(Math.random() * 1000).toFixed()}</p>
+      <p className="mb-0">Order number: {orderNumber}</p>
     </div>
   );
 

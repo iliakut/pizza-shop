@@ -14,7 +14,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const [cartItems, setCartItems] = useLocalStorage('cartItems', {count: 0});
-  console.log(cartItems);
+  const [orderHistory, setOrderHistory] = useLocalStorage('orderHistory', []);
   const menu = useMenu();
   let menuItems = [];
   let flatMenu = [];
@@ -97,6 +97,14 @@ function App() {
     setCartItems({count: 0});
   };
 
+  const saveOrderToHistory = (key, order) => {
+    setOrderHistory(oldVal => {
+      const newVal = [...oldVal];
+      newVal.push({key: order});
+      return newVal;
+    })
+  };
+
 
   return (
     <Router>
@@ -139,7 +147,9 @@ function App() {
                 return <ConfirmPage
                   price={mainPrice}
                   cartItems={cartItems}
-                  clearCart={clearCart}/>
+                  clearCart={clearCart}
+                  saveOrderToHistory={saveOrderToHistory}
+                />
               }}/>
               <Redirect to={`/`}/>
             </Switch>
