@@ -1,7 +1,15 @@
 import React from "react";
 import "./orderPage.css"
 
-const OrderPage = ({cartItems, flatMenu, currencyRate, addToCart, removeFromCart}) => {
+const OrderPage = (
+  {
+    cartItems,
+    flatMenu,
+    currencyRate,
+    addToCart,
+    removeFromCart,
+    deleteFromCart
+  }) => {
   console.log(cartItems, flatMenu);
   const newCartItems = {...cartItems};
   delete newCartItems.count;
@@ -42,7 +50,7 @@ const OrderPage = ({cartItems, flatMenu, currencyRate, addToCart, removeFromCart
         </div>
         <div className="my-1">
           <span className="mr-2">{`${allPrice}€ / ${allPriceDollars}$`}</span>
-          <button type="button" className="btn btn-secondary">
+          <button type="button" className="btn btn-secondary" onClick={() => deleteFromCart(id)}>
             <strong>
               x
             </strong>

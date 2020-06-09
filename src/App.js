@@ -71,6 +71,20 @@ function App() {
     })
   };
 
+  const deleteFromCart = (positionId) => {
+    setCartItems(cartItems => {
+      const newCartItems = {...cartItems};
+
+      if (newCartItems[positionId]) {
+        const quantity = newCartItems[positionId];
+        newCartItems.count = newCartItems.count - quantity;
+        delete newCartItems[positionId];
+      }
+
+      return newCartItems;
+    })
+  };
+
 
   return (
     <Router>
@@ -92,6 +106,7 @@ function App() {
                   currencyRate={currencyRate}
                   addToCart={addToCart}
                   removeFromCart={removeFromCart}
+                  deleteFromCart={deleteFromCart}
                 />
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {
