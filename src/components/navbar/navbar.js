@@ -1,11 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const Navbar = ({cartItems}) => {
+const Navbar = ({cartItems, pricesString}) => {
   const numberOfItems = cartItems.count;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-end sticky-top">
+      <span className="badge badge-info">{pricesString}</span>
       <Link
         to='/order'>
         <button className="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">

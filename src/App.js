@@ -7,10 +7,11 @@ import MainContent from "./components/mainContent/mainContent";
 import {HashRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 import MainPage from "./components/mainPage/mainPage";
 import OrderPage from "./components/orderPage/orderPage";
+import calcPrice from "./helpers/functions/calcPrice";
+import getPriceString from "./helpers/functions/getPriceString";
 
 function App() {
   const [cartItems, setCartItems] = useState({count: 0});
-  const [mainPrice, setMainPrice] = useState(0);
   const menu = useMenu();
   let menuItems = [];
   let flatMenu = [];
@@ -29,6 +30,9 @@ function App() {
       return menu[key].items;
     })
   }
+
+  const mainPrice = calcPrice(cartItems, flatMenu);
+  const pricesString = getPriceString(mainPrice, currencyRate);
 
   const getCurrentMenuItem = (name) => {
     if (menu) {
@@ -90,7 +94,7 @@ function App() {
   return (
     <Router>
       <React.Fragment>
-        <Navbar cartItems={cartItems}/>
+        <Navbar cartItems={cartItems} pricesString={pricesString}/>
         <div className="d-flex justify-content-start">
           <div className="flex-shrink-1 sidebar-wrap">
             <Sidebar menuItems={menuItems}/>
