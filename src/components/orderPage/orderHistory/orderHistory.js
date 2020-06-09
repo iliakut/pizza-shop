@@ -27,10 +27,9 @@ const OrderHistory = ({orderHistory}) => {
 
   return (
     <div>
-      <h3 className="text-info">Or you can select from your order history</h3>
       <details open={isOpen} onClick={(event) => handleDetailsClick(event)}>
         <summary className="">
-          Order history
+          <span className="text-info">You can select from your order history</span>
         </summary>
         <div className="rounded mt-2 px-2 pb-2">
           {
