@@ -11,6 +11,7 @@ import calcPrice from "./helpers/functions/calcPrice";
 import getPriceString from "./helpers/functions/getPriceString";
 import ConfirmPage from "./components/confirmPage/confirmPage";
 import useLocalStorage from "./hooks/useLocalStorage";
+import ErrorBoundary from "./components/errorBoundary/errorBoundary";
 
 function App() {
   const [cartItems, setCartItems] = useLocalStorage('cartItems', {count: 0});
@@ -117,41 +118,57 @@ function App() {
           <div className="main-content-wrap w-100">
             <Switch>
               <Route path={`/`} exact render={() => {
-                return <MainPage menuItems={menuItems}/>
+                return (
+                  <ErrorBoundary>
+                    <MainPage menuItems={menuItems}/>
+                  </ErrorBoundary>
+                )
               }}/>
               <Route path={`/order`} render={() => {
-                return <OrderPage
-                  cartItems={cartItems}
-                  flatMenu={flatMenu}
-                  currencyRate={currencyRate}
-                  pricesString={pricesString}
-                  addToCart={addToCart}
-                  removeFromCart={removeFromCart}
-                  deleteFromCart={deleteFromCart}
-                  orderHistory={orderHistory}
-                  setCartItems={setCartItems}
-                />
+                return (
+                  <ErrorBoundary>
+                    <OrderPage
+                      cartItems={cartItems}
+                      flatMenu={flatMenu}
+                      currencyRate={currencyRate}
+                      pricesString={pricesString}
+                      addToCart={addToCart}
+                      removeFromCart={removeFromCart}
+                      deleteFromCart={deleteFromCart}
+                      orderHistory={orderHistory}
+                      setCartItems={setCartItems}
+                    />
+                  </ErrorBoundary>
+                )
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
-                  return <MainContent
-                    menuItem={menuItem}
-                    addToCart={addToCart}
-                    currencyRate={currencyRate}
-                  />
+                  return (
+                    <ErrorBoundary>
+                      <MainContent
+                        menuItem={menuItem}
+                        addToCart={addToCart}
+                        currencyRate={currencyRate}
+                      />
+                    </ErrorBoundary>
+                  )
                 } else if (menu) {
                   return <Redirect to={`/`}/>
                 }
               }}/>
               <Route path={`/confirm`} render={() => {
-                return <ConfirmPage
-                  price={mainPrice}
-                  cartItems={cartItems}
-                  clearCart={clearCart}
-                  saveOrderToHistory={saveOrderToHistory}
-                />
+                return (
+                  <ErrorBoundary>
+                    <ConfirmPage
+                      price={mainPrice}
+                      cartItems={cartItems}
+                      clearCart={clearCart}
+                      saveOrderToHistory={saveOrderToHistory}
+                    />
+                  </ErrorBoundary>
+                )
               }}/>
               <Redirect to={`/`}/>
             </Switch>
