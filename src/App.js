@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import useMenu from "./hooks/useMenu";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
@@ -16,7 +16,25 @@ import ErrorBoundary from "./components/errorBoundary/errorBoundary";
 function App() {
   const [cartItems, setCartItems] = useLocalStorage('cartItems', {count: 0});
   const [orderHistory, setOrderHistory] = useLocalStorage('orderHistory', []);
+  const [isError, setError] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const menu = useMenu();
+
+  useEffect(() => {
+    setError(false);
+    setLoading(true);
+  }, []);
+
+  useEffect(() => {
+    if (!menu) {
+      setError(true);
+      setLoading(false);
+    } else {
+      setError(false);
+      setLoading(false);
+    }
+  }, [menu]);
+
   let menuItems = [];
   let flatMenu = [];
   const currencyRate = 1.13;

@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 const menuService = new FirebaseMenuService();
 
 const useMenu = () => {
-  const [menu, setMenu] = useState(null);
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     let cancelled = false;
