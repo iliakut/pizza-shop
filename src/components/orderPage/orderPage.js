@@ -13,6 +13,7 @@ const OrderPage = (
   console.log(cartItems, flatMenu);
   const newCartItems = {...cartItems};
   delete newCartItems.count;
+  let mainPrice = 0;
 
   const itemIds = Object.keys(newCartItems);
 
@@ -22,6 +23,7 @@ const OrderPage = (
     const quantity = newCartItems[id];
     const allPrice = (price * quantity).toFixed(2);
     const allPriceDollars = (allPrice * currencyRate).toFixed(2);
+    mainPrice += price * quantity;
 
     return (
       <div key={id} className="mb-3 mr-5 p-3 order-item">
@@ -60,10 +62,19 @@ const OrderPage = (
     )
   });
 
+  const mainPriceDollars = mainPrice * currencyRate;
+  const mainPriceString = mainPrice.toFixed(2);
+  const mainPriceDollarsString = mainPriceDollars.toFixed(2);
+
   return (
     <div className="mr-2 mt-2 order-page">
       <h1>Order</h1>
-      {CartItems}
+      {
+        CartItems.length
+          ? CartItems
+          : <h3>You have no items in your shopping cart.</h3>
+      }
+      <h3>{`${mainPriceString}€ / ${mainPriceDollarsString}$`}</h3>
     </div>
   );
 };
