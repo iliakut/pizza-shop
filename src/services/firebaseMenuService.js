@@ -2,8 +2,12 @@ class FirebaseMenuService {
   _apiBase = 'https://pizza-shop-66ecb.firebaseio.com/';
 
   async getData(route) {
-    const res = await fetch(`${this._apiBase}/${route}`);
-    return await res.json();
+    try {
+      const res = await fetch(`${this._apiBase}/${route}`);
+      return await res.json();
+    } catch (e) {
+      console.warn(e);
+    }
   }
 
   async getMenu() {
