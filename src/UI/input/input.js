@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Input = ({inputId, label, placeholder, warningMessage}) => {
+const Input = ({inputId, label, placeholder, warningMessage, setValidForm}) => {
   const [isValid, setValid] = useState(true);
   const [value, setValue] = useState('');
 
@@ -12,9 +12,11 @@ const Input = ({inputId, label, placeholder, warningMessage}) => {
   const checkValid = (value) => {
     if (value === '') {
       setValid(false);
+      setValidForm(false)
     }
     else {
       setValid(true);
+      setValidForm(true)
     }
   };
 
