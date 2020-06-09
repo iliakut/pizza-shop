@@ -131,7 +131,8 @@ function App() {
               }}/>
               <Route path={`/confirm`} render={() => {
                 return <ConfirmPage
-                />
+                  price={mainPrice}
+                  pricesString={pricesString}/>
               }}/>
               <Redirect to={`/`}/>
             </Switch>
