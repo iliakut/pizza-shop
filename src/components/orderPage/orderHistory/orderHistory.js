@@ -28,9 +28,10 @@ const OrderHistory = ({orderHistory, setCartItems}) => {
 
   return (
     <div className="mb-3">
+      <span className="text-info">You can repeat your order from the order history with one click.</span>
       <details open={isOpen} onClick={(event) => handleDetailsClick(event)}>
         <summary>
-          <span className="text-info">You can select from your order history</span>
+          <span className="text-info">Order history</span>
         </summary>
         <div className="rounded mt-2 px-2 pb-2">
           {
