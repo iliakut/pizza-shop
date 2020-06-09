@@ -5,14 +5,16 @@ const calcPrice = (cartItems, flatMenu) => {
   const itemIds = Object.keys(newCartItems);
 
   itemIds.forEach(id => {
-    const menuItem = flatMenu.find(item => Number(item.id) === Number(id)) || {};
-    const quantity = newCartItems[id];
-    const {price} = menuItem;
-    const allPrice = (price * quantity);
+    const menuItem = flatMenu.find(item => Number(item.id) === Number(id));
+    if (menuItem) {
+      const quantity = newCartItems[id];
+      const {price} = menuItem;
+      const allPrice = (price * quantity);
 
-    mainPrice += allPrice;
+      mainPrice += allPrice;
+    }
+
   });
-
   return mainPrice;
 };
 

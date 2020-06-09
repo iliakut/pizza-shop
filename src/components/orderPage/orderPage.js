@@ -20,11 +20,21 @@ const OrderPage = (
   const itemIds = Object.keys(newCartItems);
 
   const CartItems = itemIds.map(id => {
+    let name = 'Pizza Name';
+    let price = 0;
+    let img = '';
+    let quantity = 1;
+    let priceString = '';
+
     const menuItem = flatMenu.find(item => Number(item.id) === Number(id));
-    const {name, img, price} = menuItem;
-    const quantity = newCartItems[id];
-    const allPrice = (price * quantity);
-    const priceString = getPriceString(allPrice, currencyRate);
+    if (menuItem) {
+      name = menuItem.name;
+      price = menuItem.price;
+      img = menuItem.img;
+      quantity = newCartItems[id];
+      const allPrice = (price * quantity);
+      priceString = getPriceString(allPrice, currencyRate);
+    }
 
     const orderProps = {
       id,
