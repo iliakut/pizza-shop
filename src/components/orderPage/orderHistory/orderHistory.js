@@ -1,34 +1,35 @@
 import React, {useState} from "react";
 
-const OrderHistory = ({orderHistory}) => {
+const OrderHistory = ({orderHistory, setCartItems}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const historyKeys = Object.keys(orderHistory);
 
   const handleDetailsClick = (event) => {
     event.preventDefault();
     setIsOpen(!isOpen)
   };
 
-  const selectHistory = () => {
-  };
+  const HistoryItems = orderHistory.map(item => {
+    const timeStamp = Object.keys(item)[0];
+    const date = new Date(Number(timeStamp));
+    const dateString =
+      `${date.getDate()}.${date.getMonth()}.${date.getUTCFullYear()}
+       ${date.getHours()}:${date.getMinutes()}`;
 
-  const HistoryItems = historyKeys.map(key => {
-    const date = Date(key);
     return (
       <button
-        key={key}
-        className="btn btn-outline-info"
-        onClick={() => selectHistory(orderHistory[key])}
+        key={timeStamp}
+        className="btn btn-outline-info mb-1 d-block"
+        onClick={() =>setCartItems(item[timeStamp])}
       >
-        {date}
+        {dateString}
       </button>
     )
   });
 
   return (
-    <div>
+    <div className="mb-3">
       <details open={isOpen} onClick={(event) => handleDetailsClick(event)}>
-        <summary className="">
+        <summary>
           <span className="text-info">You can select from your order history</span>
         </summary>
         <div className="rounded mt-2 px-2 pb-2">

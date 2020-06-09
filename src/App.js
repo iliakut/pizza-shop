@@ -129,6 +129,7 @@ function App() {
                   removeFromCart={removeFromCart}
                   deleteFromCart={deleteFromCart}
                   orderHistory={orderHistory}
+                  setCartItems={setCartItems}
                 />
               }}/>
               <Route path={`/menu/:menuHeader`} render={({match}) => {

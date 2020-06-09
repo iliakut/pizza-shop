@@ -16,6 +16,7 @@ const OrderPage = (
     removeFromCart,
     deleteFromCart,
     orderHistory,
+    setCartItems
   }) => {
 
   const newCartItems = {...cartItems};
@@ -86,7 +87,10 @@ const OrderPage = (
           ? OrderButton
           : null
       }
-      <OrderHistory orderHistory={orderHistory}/>
+      <OrderHistory
+        orderHistory={orderHistory}
+        setCartItems={setCartItems}
+      />
     </div>
   );
 };
