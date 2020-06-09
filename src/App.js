@@ -12,6 +12,7 @@ import getPriceString from "./helpers/functions/getPriceString";
 import ConfirmPage from "./components/confirmPage/confirmPage";
 import useLocalStorage from "./hooks/useLocalStorage";
 import ErrorBoundary from "./components/errorBoundary/errorBoundary";
+import Spinner from "./UI/spinner/spinner";
 
 function App() {
   const [cartItems, setCartItems] = useLocalStorage('cartItems', {count: 0});
@@ -31,7 +32,9 @@ function App() {
       setLoading(false);
     } else {
       setError(false);
-      setLoading(false);
+      if (menu.length) {
+        setLoading(false);
+      }
     }
   }, [menu]);
 
@@ -135,16 +138,19 @@ function App() {
           </div>
           <div className="main-content-wrap w-100">
             <Switch>
-              <Route path={`/`} exact render={() => {
+              <Route path="/" exact render={() => {
                 return (
                   <ErrorBoundary>
                     <MainPage menuItems={menuItems}/>
                   </ErrorBoundary>
                 )
               }}/>
-              <Route path={`/order`} render={() => {
+              <Route path="/order" render={() => {
                 if (isError) {
-                  return <Redirect to={`/`}/>
+                  return <Redirect to="/"/>
+                }
+                if (isLoading) {
+                  return <Spinner/>
                 }
                 return (
                   <ErrorBoundary>
@@ -162,7 +168,7 @@ function App() {
                   </ErrorBoundary>
                 )
               }}/>
-              <Route path={`/menu/:menuHeader`} render={({match}) => {
+              <Route path="/menu/:menuHeader" render={({match}) => {
                 const {menuHeader}  = match.params;
                 const menuItem = getCurrentMenuItem(menuHeader);
                 if (menuItem) {
@@ -179,9 +185,12 @@ function App() {
                   return <Redirect to={`/`}/>
                 }
               }}/>
-              <Route path={`/confirm`} render={() => {
+              <Route path="/confirm" render={() => {
                 if (isError) {
                   return <Redirect to={`/`}/>
+                }
+                if (isLoading) {
+                  return <Spinner/>
                 }
                 return (
                   <ErrorBoundary>
@@ -194,7 +203,7 @@ function App() {
                   </ErrorBoundary>
                 )
               }}/>
-              <Redirect to={`/`}/>
+              <Redirect to="/"/>
             </Switch>
           </div>
         </div>
