@@ -35,28 +35,28 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 The app gets its all menu data from firebase, you can change it in any time and you will see the changes in the app.
 
 ### Main page
-In the main page you can see menu (burger menu if it is mobile) welcome page and sidebar (with cart icon)<br />
+On the main page you can see menu (burger menu if it is mobile), welcome page and sidebar (with cart icon).<br />
 The menu (burger menu) content loads from firebase.<br />
-Cart icon shows real-time changing count of your cart items and next to it you can see all items price.<br />
+Cart icon shows real-time changing count of your cart items. Next to cart you can see all items price.<br />
 
 ### Menu page
-In every menu (pizza for example) you can see the name, picture, price and description of menu items.<br />
-Cards have the button "add+" it will add the item to the cart.<br />
+In every menu (pizza's for example) you can see the name, picture, price and description of the item.<br />
+Every cards have the button "add+". Pushing the button you add the item to the cart.<br />
 
 ### Order page
-By clicking the cart button you can go to order page.<br />
-The order page has menu items with name, price and number of items in your cart.<br />
-You can change the number of every menu item by clicking "-" and "+", "x" button allows you to delete item from the cart.
-If it is 0 of the menu items it will be deleted automatically.<br />
-If there are no items in your cart you will see notification banner.<br />
-At the bottom of Order page you can see the price of all items in the cart.<br />
-Also at the bottom of Order page you can repeat any of your previous orders. By clicking on the history item
-you will get its items in your cart.<br />
-By clicking the "order now" button (if there is any item in your cart) you will go to the Confirm page<br />
+By clicking the cart button you move to order page.<br />
+On the order page you can see the name, the price and quantity of the chosen item.<br />
+You can change the quantity of every item by clicking "-" and "+". "x" button allows you to delete item from the cart.
+If the quantity of the item is 0 it will be deleted automatically.<br />
+At the bottom of the Order page you can see the price of all items in your cart.<br />
+Also at the bottom of Order page you can repeat any of your previous orders.<br />
+If you click at any of your previous orders in "order history" you will put all the items from that order into your cart. 
+That allows you quickly repeat any of your previous orders.<br />
+By clicking the "order now" button (if there is any item in your cart) you will go to the Confirm page.<br />
 
 ### Confirm page
-The confirm page has order form (some field are required), information about your order (price, delivery cost)
-and confirm button (it's disabled if required fields are empty).<br />
-After confirmation you will see success banner with your order number, after this the cart will be emptied.
-And this order will be saved in your order history.<br />
+The confirm page has order form (some fields are required), information about your order (price, delivery cost)
+and confirm button (it's disabled if the required fields are empty).<br />
+After confirmation you will see success banner with your order number, the cart will be automatically emptied.
+The order will be saved in your order history.<br />
 Order history is saved to localStorage. 
