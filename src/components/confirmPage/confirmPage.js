@@ -21,7 +21,10 @@ const ConfirmPage = (
   const [isAllValid, setAllValid] = useState(true);
   const [isConfirmed, setConfirmed] = useState(false);
   const orderNumber = (Math.random() * 1000).toFixed();
-  const totalPrice = price + 10;
+  let totalPrice = price;
+  if (totalPrice < 250) {
+    totalPrice += 10;
+  };
   const deliveryCost = getPriceString(10);
   const totalPriceString = getPriceString(totalPrice);
   let btnClasses = 'btn btn-info';
