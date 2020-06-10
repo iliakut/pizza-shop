@@ -16,6 +16,7 @@ const ConfirmPage = (
     name: false,
     surname: false,
     address: false,
+    phone: false,
   });
   const [isAllValid, setAllValid] = useState(true);
   const [isConfirmed, setConfirmed] = useState(false);
@@ -108,8 +109,16 @@ const ConfirmPage = (
         inputId="addressInput"
         label="Address*"
         placeholder="Enter your address"
-        warningMessage="Please enter your Address"
+        warningMessage="Please enter your address"
         setValidForm={(isValid) => validateForm('address', isValid)}
+        disabled={isConfirmed}
+      />
+      <Input
+        inputId="phoneInput"
+        label="Phone Number*"
+        placeholder="Enter your phone number"
+        warningMessage="Please enter phone number"
+        setValidForm={(isValid) => validateForm('phone', isValid)}
         disabled={isConfirmed}
       />
       <div className="form-group">

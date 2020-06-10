@@ -48,6 +48,15 @@ By clicking the cart button you can go to order page.<br />
 The order page has menu items with name, price and number of items in your cart.<br />
 You can change the number of every menu item by clicking "-" and "+", "x" button allows you to delete item from the cart.
 If it is 0 of the menu items it will be deleted automatically.<br />
-  
+If there are no items in your cart you will see notification banner.<br />
+At the bottom of Order page you can see the price of all items in the cart.<br />
+Also at the bottom of Order page you can repeat any of your previous orders. By clicking on the history item
+you will get its items in your cart.<br />
+By clicking the "order now" button (if there is any item in your cart) you will go to the Confirm page<br />
 
- 
+### Confirm page
+The confirm page has order form (some field are required), information about your order (price, delivery cost)
+and confirm button (it's disabled if required fields are empty).<br />
+After confirmation you will see success banner with your order number, after this the cart will be emptied.
+And this order will be saved in your order history.<br />
+Order history is saved to localStorage. 
