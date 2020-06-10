@@ -12,7 +12,7 @@ const OrderHistory = ({orderHistory, setCartItems}) => {
     const timeStamp = Object.keys(item)[0];
     const date = new Date(Number(timeStamp));
     const dateString =
-      `${date.getDate()}.${date.getMonth()}.${date.getUTCFullYear()}
+      `${date.getDate()}.${date.getMonth() + 1}.${date.getUTCFullYear()}
        ${date.getHours()}:${date.getMinutes()}`;
 
     return (
