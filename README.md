@@ -30,6 +30,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+
 ## Description
 
 The app gets its all menu data from firebase, you can change it in any time and you will see the changes in the app.
