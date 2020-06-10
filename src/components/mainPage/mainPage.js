@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import Spinner from "../../UI/spinner/spinner";
 
-const MainPage = ({menuItems}) => {
+const MainPage = ({menuItems, isError}) => {
   const MenuLinks = menuItems.map(item => {
     return (
       <Link
@@ -13,6 +13,12 @@ const MainPage = ({menuItems}) => {
       </Link>
     )
   });
+
+  const Alert = (
+    <div className="alert alert-danger m-3">
+      Something went wrong. Try again later
+    </div>
+  );
 
   return (
     <div className="jumbotron bg-transparent">
@@ -25,6 +31,11 @@ const MainPage = ({menuItems}) => {
         MenuLinks.length
         ? <h5>{MenuLinks}</h5>
         : <Spinner/>
+      }
+      {
+        isError
+        ? Alert
+        : null
       }
     </div>
   );

@@ -141,7 +141,10 @@ function App() {
               <Route path="/" exact render={() => {
                 return (
                   <ErrorBoundary>
-                    <MainPage menuItems={menuItems}/>
+                    <MainPage
+                      menuItems={menuItems}
+                      isError={isError}
+                    />
                   </ErrorBoundary>
                 )
               }}/>
@@ -181,7 +184,7 @@ function App() {
                       />
                     </ErrorBoundary>
                   )
-                } else if (menu || isError) {
+                } else if (menu?.length || isError) {
                   return <Redirect to="/"/>
                 }
               }}/>
